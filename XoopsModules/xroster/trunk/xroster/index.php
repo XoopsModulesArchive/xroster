@@ -39,7 +39,7 @@ switch ($op) {
 
     function submit_application($realname, $membername, $email, $age, $impref, $imid, $cid, $location, $speed, $ahours, $pweapon, $sweapon, $clan_before, $why_play, $skills_talents, $additional) {
       global $xoopsModuleConfig, $xoopsConfig;
-      $db =& Database::getInstance();
+      $db =& XoopsDatabaseFactory::getDatabaseConnection();
       $myts =& MyTextSanitizer::getInstance();
       // quote parameters
       $parameters = array('realname', 'membername', 'email', 'age', 'impref', 'imid', 'cid', 'location', 'speed', 'ahours', 'pweapon', 'sweapon', 'clan_before', 'why_play', 'skills_talents', 'additional');
@@ -112,7 +112,7 @@ switch ($op) {
   case 'View':
 
     function getMember($id) {
-      $db =& Database::getInstance();
+      $db =& XoopsDatabaseFactory::getDatabaseConnection();
       $rs = xRoster_Query('SELECT m.*, t.name AS title, g.name AS xgroup, c.name AS game FROM {xRoster} m
         INNER JOIN {xRoster_titles} t ON m.tid = t.id
         INNER JOIN {xRoster_groups} g ON m.gid = g.id
@@ -132,7 +132,7 @@ switch ($op) {
   default:
 
     function getMembers() {
-      $db =& Database::getInstance();
+      $db =& XoopsDatabaseFactory::getDatabaseConnection();
       $rs = xRoster_Query('SELECT m.id, m.membername, m.since, t.name AS title, g.name AS xgroup, c.name AS game FROM {xRoster} m
         INNER JOIN {xRoster_titles} t ON m.tid = t.id
         INNER JOIN {xRoster_groups} g ON m.gid = g.id

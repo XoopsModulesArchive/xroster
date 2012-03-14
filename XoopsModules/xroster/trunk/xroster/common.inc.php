@@ -24,7 +24,7 @@ function dump($var) {
 
 function xRoster_PostVar($k, $defval = null) {
   static $db = false, $myts = false;
-  if(!$db) $db =& Database::getInstance();
+  if(!$db) $db =& XoopsDatabaseFactory::getDatabaseConnection();
   if(!$myts) $myts =& MyTextSanitizer::getInstance();
   return isset($_POST[$k]) ? $myts->stripSlashesGPC($_POST[$k]) : $defval;
 }
@@ -32,7 +32,7 @@ function xRoster_PostVar($k, $defval = null) {
 function &xRoster_Query($sql) {
   global $xoopsModule;
   static $db = false;
-  if(!$db) $db =& Database::getInstance();
+  if(!$db) $db =& XoopsDatabaseFactory::getDatabaseConnection();
   foreach($xoopsModule->getInfo('tables') as $table)
     if(strpos($sql, '{' . $table . '}'))
       $sql = str_replace('{' . $table . '}', $db->prefix($table), $sql);
@@ -94,7 +94,7 @@ function xRoster_YNDropDown($name, $value = 0) {
 }
 
 function xRoster_SQLDropDown($sql, $name, $value = '', $empty_option = null) {
-  $db =& Database::getInstance();
+  $db =& XoopsDatabaseFactory::getDatabaseConnection();
   $result = xRoster_Query($sql);
   $option = array();
   while($row = $db->fetchArray($result)) {
@@ -110,7 +110,7 @@ function xRoster_SQLDropDown($sql, $name, $value = '', $empty_option = null) {
 function xRoster_DefaultTitle() {
   static $ret = null;
   if($ret === null) {
-    $db =& Database::getInstance();
+    $db =& XoopsDatabaseFactory::getDatabaseConnection();
     $result = $db->query('SELECT id FROM ' . $db->prefix('xRoster_titles') . ' WHERE isdefault = 1');
     if($row = $db->fetchArray($result)) {
       $ret = $row['id'];
