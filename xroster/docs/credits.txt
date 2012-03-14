@@ -1,0 +1,5 @@
+Credits
+===============
+
+xRoster Module was based on the OFX_Clan_Roster module for nuke php. Rather then try to port over the OFX_Clan_Roster
+module Arowana decided just to build a new module just for XOOPS site.
