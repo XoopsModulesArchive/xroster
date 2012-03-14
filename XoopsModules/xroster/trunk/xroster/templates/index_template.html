@@ -1,0 +1,184 @@
+<{if ($pop == "apply")}>
+
+  <script language="javascript" type="text/javascript">
+    function xRoster_formIsValid(frm) {
+      if(frm.tag.value == '0') { alert('<{$lang_tagerror}>'); return false; }
+      return true;
+    }
+  </script>
+<form method="post" name="xRoster_formApplication" id="xRoster_formApplication" onSubmit="return xRoster_formIsValid(this);">
+  <table cellpadding="0" cellspacing="0" width="100%">
+		<tr>
+			<td class="itemHead"><span class="itemTitle"><{$sitename}> <{$lang_formtitle}></span></td></tr>
+			</table>
+ 	    <table class="outer" cellspacing="0" border="0" cellpadding="0">
+      <tr>
+        <td><strong><center><br><{$heading}><br><br></center>
+		 <{if $msg}><br><center><font color="green"><strong><{$msg}></strong></font><br><br></center><{/if}>
+		</td>
+	        </tr>
+			</table><table class="outer" cellspacing="0" border="0" cellpadding="0">
+      <tr>
+        <td align=right><strong><{$lang_realname}>*:</strong></td>
+        <td><input type="text" name="realname" value="<{$realname}>" size="30"></td>
+      </tr>
+      <tr>
+        <td align=right><strong><{$lang_callsign}> *:</strong></td>
+        <td><input type="text" name="membername" value="<{$membername}>" size="30"></td>
+      </tr>
+      <tr>
+        <td align=right><strong><{$lang_email}> *:</strong></td>
+        <td><input type="text" name="email" value="<{$email}>" size="30"></td>
+      </tr>
+      <tr>
+        <td align=right><strong><{$lang_age}> *:</strong></td>
+        <td><input type="text" name="age" value="<{$age}>" size="2" maxlength="2"></td>
+      </tr>
+
+      <tr>
+        <td align=right><strong><{$lang_impref}>:</strong></td>
+        <td><{$select_impref}></td>
+      </tr>
+      <tr>
+        <td align=right><strong><{$lang_imid}>:</strong></td>
+        <td><input type="text" name="imid" value="<{$imid}>" size="30"></td>
+      </tr>
+
+      <tr>
+        <td align=right><strong><{$lang_game}>:</strong></td>
+        <td><{$select_game}></td>
+      </tr>
+      <tr>
+        <td align=right><strong><{$lang_location}>:</strong></td>
+        <td><{$select_location}></td>
+      </tr>
+      <tr>
+        <td align=right><strong><{$lang_speed}>:</strong></td>
+        <td><{$select_speed}></td>
+      </tr>
+      <tr>
+        <td align=right><strong><{$lang_ahours}>:</strong></td>
+        <td><{$select_ahours}></td>
+      </tr>
+      <tr>
+        <td align=right><strong><{$lang_pweapon}>:</strong></td>
+        <td><{$select_pweapon}></td>
+      </tr>
+      <tr>
+        <td align=right><strong><{$lang_sweapon}>:</strong></td>
+        <td><{$select_sweapon}></td>
+      </tr>
+      <tr>
+        <td align=right><strong><{$lang_clanbefore}>:</strong></td>
+        <td><{$select_clanbefore}></td>
+      </tr>
+      <tr>
+        <td align=right>
+          <strong><{$lang_whyplay}>:</strong></td>
+        <td><textarea name="why_play" rows="3" cols="35"><{$why_play}></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td align=right>
+          <strong><{$lang_skillstalents}>:</strong></td>
+        <td><textarea name="skills_talents" rows="3" cols="35"><{$skills_talents}></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td align=right>
+          <strong><{$lang_additional}>:</strong></td>
+        <td><textarea name="additional" rows="3" cols="35"><{$additional}></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td align=right>
+          <strong><{$lang_tag}>:</strong></td><td>
+          <{$select_tag}><br><br>
+        </td>
+      </tr>
+	  <table class="outer" cellspacing="0" border="0" cellpadding="0">
+	  <tr>
+	  <td class="content"><strong><CENTER><br><{$agreement}><br><br></CENTER></strong></td>
+      </tr>
+	  <tr>
+	  <td class="content"><CENTER><{$agreement2}><br><br></CENTER></strong></strong></td>
+      </tr>
+	  <tr>
+	  <td class="content"><CENTER><input type="submit" name="op" value="<{$lang_submit}>"><br><br></CENTER></td>
+	        </tr>
+  <tr>
+			<td class="itemFoot"></td>
+		</tr>
+		</form>
+</table>
+<{elseif ($pop == "applied")}>
+
+  <script language="javascript" type="text/javascript">
+    function xRoster_backHome() {
+      window.location.href = '<{$smarty.const.XOOPS_URL/index.php}>';
+    }
+    setTimeout('xRoster_backHome()', 5000);
+  </script>
+  <h2 align="center"><{$lang_applied}></h2>
+
+<{elseif ($pop == "list_members")}>
+
+	<{foreach key=gamename item=game from=$members}>
+    <table cellpadding="0" cellspacing="0" width="100%">
+		<tr>
+			<td class="itemHead"><span class="itemTitle"><{$gamename}></span></td>
+		</tr></table>
+    <table width="100%" align="center" cellspacing="8" cellpadding="8" class="outer">
+    <{foreach key=groupname item=xgroup from=$game}>
+      <tr><td colspan="3"><b><{$groupname}></b></td></tr>
+      <{foreach item=member from=$xgroup}>
+        <tr class="<{cycle values="odd,even"}>"><td width="30%"><a href="index.php?op=View&id=<{$member.id}>"><{$member.membername}></a></td><td width="30%"><{$member.title}></td><td width="30%"><{$lang_since}>: <{$member.since}></td>
+        </tr>
+      <{/foreach}>
+    <{/foreach}>
+	<tr></table><table cellpadding="0" cellspacing="0" width="100%">
+		<td class="itemFoot"></td>
+	</tr></table><br><br>
+  <{foreachelse}>
+    <p align="center"><{$lang_nomembers}></p>
+  <{/foreach}>
+
+<{elseif ($pop == "view_member")}>
+
+      <table cellpadding="0" cellspacing="0" width="80%">
+		<tr>
+			<td class="itemHead"><span class="itemTitle"><CENTER><{$member.membername}></CENTER></span></td>
+		</tr></table>
+  <table width="80%" align="center" cellspacing="8" cellpadding="8" class="outer">
+    <tr>
+      <td align="left">
+        <{if $member.picture}>
+          <img align="right" src="<{$member.picture}>" alt="<{$member.membername}> / <{$member.title}>">
+        <{/if}>
+        <p><b><{$lang_since}>:</b> <{$member.since}><br>
+        <b><{$lang_title}>:</b> <{$member.title}><br>
+        <b><{$lang_games}> / <{$lang_group}>:</b> <{$member.game}> / <{$member.xgroup}><br>
+        <b><{$lang_realname}>:</b> 
+		<{if ($opt2 == 0 && $member.email)}>
+            <a href="mailto:<{$member.email}>"><{$member.realname}></a>
+          <{else}>
+            <{$member.realname}><{/if}><br>
+        <b><{$lang_location}>:</b> <{$member.location}><br>
+        <b><{$lang_age}>:</b> <{$member.age}><br>
+        <{if $member.siteurl}>
+        <b><{$lang_website}>:</b> <a target="_blank" href="<{$member.siteurl}>"><{if $member.sitename}><{$member.sitename}><{else}><{$member.siteurl}></a><{/if}></a><br>
+        <{/if}>
+        <b><{$lang_connection}>:</b> <{$member.connection}><br>
+        <b><{$lang_IM}>:</b> <{if $member.imid && $member.impref}><{$member.imid}> <{$lang_IM_on}> <{$member.impref}><{else}><{$lang_IM_none}><{/if}><br>
+        <{if $member.additional_comments}><br><b><{$lang_info}>:</b> <{$member.additional_comments}><br><{/if}>
+        <{if $member.why_play}><b><{$lang_whyplay}>:</b> <{$member.why_play}><br><{/if}>
+        <{if $member.skills_talents}><b><{$lang_skillstalents}>:</b> <{$member.skills_talents}><br><{/if}>
+        <{if $member.additional_info}><b><{$lang_addinfo}>:</b> <{$member.additional_info}><br><{/if}>
+      </td>
+    </tr>
+	  </table>
+   <table cellpadding="0" cellspacing="0" width="80%">
+	<tr>
+		<td class="itemFoot"><span class="itemTitle"><CENTER><a href="index.php"><{$lang_back}></a></CENTER></span></td>
+	</tr></table>
+<{/if}>
