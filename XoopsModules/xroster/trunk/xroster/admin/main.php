@@ -303,22 +303,13 @@ function Title_Editor($t_action, $id, $name, $weight)
             redirect_header('main.php?op=Title_Editor', 1, _MD_TITLEDELETED);
             break;
 
-
         case 'update':
-            $result = xRoster_Query("UPDATE {xRoster_titles} SET name=%s, weight=%u, active=%u WHERE ID=%u", $name, $weight, $active, $id);
+            $result = xRoster_Query("UPDATE {xRoster_titles} SET name=%s, weight=%u WHERE ID=%u", $name, $weight, $id);
             redirect_header("main.php?op=Title_Editor", 1, _MD_TITLEUPDATED);
             break;
-        /*
-        case "insert":
-      			$sql = "INSERT INTO " . $db->prefix("xRoster_titles") . " (name,weight) VALUES ('$name',$weight)";
-      			if ( !$result = $db->query($sql) ) {
-      				exit("Error in admin/main.php :: Title_Editor($t_action,$id,$name,$weight)");
-      			}
-      			redirect_header("main.php?op=Title_Editor", 1, _MD_TITLEINSERTED);
-      		break;
-*/
+
         case 'insert':
-            $result = xRoster_Query("INSERT INTO {xRoster_titles} (name, weight, active) VALUES (%s, %u, %u)", $name, $weight, $active);
+            $result = xRoster_Query("INSERT INTO {xRoster_titles} (name, weight) VALUES (%s, %u)", $name, $weight);
             redirect_header('main.php?op=Title_Editor', 1, _MD_TITLEINSERTED);
             break;
         case 'add':
@@ -329,7 +320,6 @@ function Title_Editor($t_action, $id, $name, $weight)
             $t_action == 'edit' ? '<input type="hidden" name="id" value="' . $id . '">' : '', '<table cellspacing=0 cellpadding=8 class="outer">
              <tr><td>', _MD_TITLENAME, '</td><td><input type="text" name="name" value="', $name, '"></td></tr>
              <tr><td>', _MD_WEIGHT, '</td><td><input type="text" name="weight" value="', $weight, '"></td></tr>
-             <tr><td>', _MD_ACTIVE, '</td><td>', xRoster_YNDropDown('active', $active), '</td></tr>
              <tr><td>&nbsp;</td><td><input type="submit" value="', $t_action == 'edit' ? _MD_UPDATE : _MD_INSERT, '">
              </td></tr>
              </table>
