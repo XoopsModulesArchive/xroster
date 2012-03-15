@@ -1,0 +1,8 @@
+Version 2.30
+-------------------
+- Converted to XOOPS 2.5.x Admin GUI (Mamba)
+
+
+Version 2.23
+-------------------
+Release by Arowana
