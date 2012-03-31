@@ -102,7 +102,7 @@ $lang_array_apply = array(
   'lang_whyplay'=>'Why do you want to be part of a clan?',
   'lang_skillstalents'=>'What skill, or talent will you bring to the clan?',
   'lang_additional'=>'Any additional comments or things we should know?',
-  'lang_tag'=>'Are you willing to wear the <u>' . $GLOBALS['xoopsConfig']['sitename'] . '</u> tag at all times?',
+  'lang_tag'=>'Are you willing to wear the <u>' . $xoopsConfig['sitename'] . '</u> tag at all times?',
   'lang_submit'=>'Submit Application',
 );
 
@@ -114,9 +114,6 @@ define('_MD_AMSG_EEMAIL', 'You must enter a valid email address.');
 define('_MD_AMSG_EAGE', 'You must enter your age.');
 define('_MD_AMSG_ERROR_STOVR', 'Please Start Over.');
 define('_MD_AMSG_APPLIED', 'Thank your for applying. We will review your application and let you know.');
-
-define('_MD_ACTIONS', 'Actions');
-
 
 global $lang_array_view;
 $lang_array_view = array(
@@ -138,3 +135,5 @@ $lang_array_view = array(
   'lang_whyplay'=>'I want to be part of a clan because',
   'lang_since'=>'Member Since',
 );
+
+?>

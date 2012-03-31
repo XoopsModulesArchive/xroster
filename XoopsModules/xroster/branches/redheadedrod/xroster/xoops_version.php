@@ -1,36 +1,17 @@
 <?php
 
 $modversion['name'] = 'xRoster';
-$modversion['version'] = '2.3.0';
+$modversion['version'] = '2.2.3';
 $modversion['description'] = _MD_XROSTER_MODDESC;
 $modversion['credits'] = 'SOE Gamers';
 $modversion['author'] = 'SOE Gamers';
-$modversion['help']        = 'page=help';
-$modversion['license']     = 'GNU GPL 2.0';
-$modversion['license_url'] = "www.gnu.org/licenses/gpl-2.0.html/";
+$modversion['help'] = 'xRoster_help.html';
+$modversion['license'] = 'GPL';
 $modversion['official'] = 0;
 $modversion['image'] = 'xroster.png';
 $modversion['dirname'] = 'xroster';
 $modversion['website'] = 'www.soegamers.com';
 $modversion['email'] = 'churchill@soegamers.com';
-
-$modversion['dirmoduleadmin'] = '/Frameworks/moduleclasses/moduleadmin';
-$modversion['icons16'] = '../../Frameworks/moduleclasses/icons/16';
-$modversion['icons32'] = '../../Frameworks/moduleclasses/icons/32';
-
-//about
-$modversion["module_website_url"] = "http://www.xoops.org/";
-$modversion["module_website_name"] = "XOOPS";
-$modversion["release_date"] = "2011/11/25";
-$modversion["module_status"] = "Beta";
-$modversion["author_website_url"] = "http://www.xoops.org/";
-$modversion["author_website_name"] = "XOOPS";
-$modversion['min_php']='5.2';
-$modversion['min_xoops']='2.5';
-$modversion['min_admin']='1.1';
-$modversion['min_db']= array('mysql'=>'5.0.7', 'mysqli'=>'5.0.7');
-
-
 // Admin things
 $modversion['hasAdmin'] = 1;
 $modversion['adminindex'] = 'admin/index.php';
@@ -38,7 +19,6 @@ $modversion['adminmenu'] = 'admin/menu.php';
 
 // Menu
 $modversion['hasMain'] = 1;
-$modversion['system_menu'] = 1;
 global $xoopsModule;
 if ($xoopsModule && $xoopsModule->getVar('dirname') == $modversion['dirname']) {
   global $xoopsModuleConfig;
