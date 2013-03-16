@@ -1,0 +1,200 @@
+<{if ($pop == "apply")}>
+
+  <script language="javascript" type="text/javascript">
+    function xroster_formIsValid(frm) {
+      if(frm.tag.value == '0') { alert('<{$lang_tagerror}>'); return false; }
+      return true;
+    }
+  </script>
+<form method="post" name="xroster_formApplication" id="xroster_formApplication" onSubmit="return xroster_formIsValid(this);">
+  <table cellpadding="0" cellspacing="0" width="100%">
+
+
+      <tr>
+        <td><strong><center><br><{$heading}><br><br></center>
+		 <{if $msg}><br><center><font color="red"><strong><{$msg}></strong></font><br><br></center><{/if}>
+		</td>
+	        </tr>
+			</table><table class="outer" cellspacing="0" border="0" cellpadding="0">      
+      
+        <td align=right><strong>Realname (From profile/account):</strong></td>
+		<td><{$realname}></td>
+        <td><input type="hidden" name="realname" value="<{$realname}>" size="30"></td>
+      </tr>
+	  <tr>
+        <td align=right><br><strong>Email (From profile/account):</strong></td>
+		<td><br><{$email}></td>
+        <td><br><input type="hidden" name="email" value="<{$email}>" size="30"></td>
+      </tr>
+	  
+      <tr>
+        <td align=right><br><strong>Birthdate (mm/dd/yyyy):</strong></td>
+        <td><br><input type="text" name="bdate" value="<{$bdate}>" size="30"></td>
+      </tr>
+	  <tr>
+        <td align=right><br><strong><{$lang_position}>:</strong></td>
+        <td><br><{$select_spositions}></td>
+      </tr>
+	  <tr>
+        <td align=right><br><strong>Weight:</strong></td>
+        <td><br><{$select_sweight}></td>
+      </tr>
+	  <tr>
+        <td align=right><br><strong>Height:</strong></td>
+        <td><br><{$select_sheight}></td>
+      </tr>
+      <tr>
+        <td align=right><br><strong>Experience (pro/semipro) in years. (0 if you are a rookie):</strong></td>
+        <td><br><input type="text" name="exper" value="<{$exper}>" size="30"></td>
+      </tr>
+      <tr>
+        <td align=right><br><strong>School :</strong></td>
+        <td><br><input type="text" name="school" value="<{$school}>" size="30"></td>
+      </tr>
+	  <tr>
+        <td align=right><br><strong><{$lang_phone}> :</strong></td>
+        <td><br><input type="text" name="phone" value="<{$phone}>" size="30"></td>
+      </tr> 
+
+      <tr>
+        <td align=right><br><strong>Street Number and Name :</strong></td>
+        <td><br><input type="text" name="address" value="<{$address}>" size="30"></td>
+      </tr>
+      <tr>
+        <td align=right><br><strong>City :</strong></td>
+        <td><br><input type="text" name="city" value="<{$city}>" size="30"></td>
+      </tr>
+      <tr>
+        <td align=right><br><strong>State (2 letters):</strong></td>
+        <td><br><input type="text" name="pstate" value="<{$pstate}>" size="30"></td>
+      </tr>	  
+      <tr>
+        <td align=right><br><strong>Zipcode :</strong></td>
+        <td><br><input type="text" name="zipcode" value="<{$zipcode}>" size="30"></td>
+      </tr>
+      <tr>
+        <td><input type="hidden" name="membername" value="<{$membername}>"</td>
+      </tr>
+	  
+	  <tr>
+        <td><input type="hidden" name="member" value="<{$member}>"</td>
+      </tr>
+	  
+	  <tr>
+        <td><input type="hidden" name="jnumber" value="<{$jnumber}>"</td>
+      </tr>
+	  
+	  <tr>
+        <td><input type="hidden" name="picture" value="<{$picture}>"</td>
+      </tr>
+	  
+	  <tr>
+        <td><input type="hidden" name="id" value="<{$id}>"</td>
+      </tr>
+	  
+      </tr>
+  
+	  <table class="outer" cellspacing="0" border="0" cellpadding="0">
+      <tr>
+	  <td><strong><center><br><br><br><{$agreement}><br><br></center></td>
+	  </tr><tr>	  
+	  <td><strong><center><br><{$agreement2}><br><br></center></td>	
+	  </tr>
+
+	 <tr>	 
+	  <td class="content"><CENTER><input type="submit" name="op" value="<{$lang_submit}>"><br><br></CENTER></td>
+	  </tr>
+ 	 <{if $editdirty}><tr><td><br><br><center><strong>Warning! If you submit, the admin will have to reactivate your entry<br>
+           so do NOT submit unless you made changes.</strong><br><br></center></td></tr><{/if}>
+		</form>
+</table>
+
+<{elseif ($pop == "applied")}>
+  <script language="javascript" type="text/javascript">
+    function contact_backHome() {
+      window.location.href = 'index.php';
+    }
+    setTimeout('contact_backHome()', 5000);
+  </script>
+  <h1 align="center">Thank you!<br><br></h1>
+   <h2 align="center">Your application has been accepted.<br>If new it will be reviewed shortly.</h2>
+
+<{elseif ($pop == "list_members")}>
+
+	<{foreach key=gamename item=game from=$members}>
+    <table cellpadding="0" cellspacing="0" width="100%">
+		<tr>
+			<td class="itemHead"><span class="itemTitle">Player Roster</span></td>
+		</tr></table>
+    <table width="100%" align="center" cellspacing="0" cellpadding="0" class="outer">
+    <{foreach key=groupname item=xgroup from=$game}>
+	  <{if $ugroup}><tr><td colspan="3"><b><{$groupname}></b></td></tr><{/if}>
+	    <tr>
+	        <th width="30%">Players Name</th>
+	        <th width="13%">Position</th>   
+            <th width="13%">Height</th> 
+			<th width="13%">Weight</th> 
+			<th width="13%">Number</th> 
+			<th width="18%">Hometown</th> 
+        </tr>
+      <{foreach item=member from=$xgroup}>
+        <tr class="<{cycle values="odd,even"}>">
+	        <td><a href="index.php?op=View&id=<{$member.id}>" title="Click here to view <{$member.realname}>" alt="<{$member.realname}>"><{$member.realname}></a></td>
+	        <td><{$member.spositions}></td>   
+            <td><{$member.sheight}></td> 
+			<td><{$member.sweight}></td> 
+			<td><{$member.jnumber}></td> 
+			<td><{$member.city}>, <{$member.pstate}></td> 
+        </tr>
+      <{/foreach}>
+    <{/foreach}>
+	<tr></table><table cellpadding="0" cellspacing="0" width="100%">
+		<td class="itemFoot"></td>
+	</tr></table><br><br>
+  <{foreachelse}>
+    <p align="center">No members have been approved yet.<br>Please check back again soon.</p>
+  <{/foreach}>
+  <{if $xrosterapplication && $xoops_isuser}>
+     <div style="textalign:center"><br><br><h3>Players click 
+	 <a href="index.php?op=Apply" title="Click here to enter or edit your roster information" alt="edit/enter roster information">HERE</a>
+	 to enter or edit your roster information.<br>(Only while roster is still open)</h3></div>
+  <{elseif $xoops_isuser}>
+    <div style="textalign:center"><br><br><h3>Roster is locked and no more players can be added.<br>Only an Admin can change your information.<br>
+	Email all changes to <a href="mailto:<{$adminmail}>"><{$adminmail}></a>.</h3></div>    
+  <{/if}>
+
+<{elseif ($pop == "view_member")}>
+
+      <table cellpadding="0" cellspacing="0" width="80%">
+		<tr>
+			<td class="itemHead"><span class="itemTitle"><h1><CENTER><{$member.realname}></CENTER></h1></span></td>
+		</tr></table></br> </br>
+  <table width="80%" align="center" cellspacing="8" cellpadding="8" class="outer">
+    <tr> 
+      <td align="left">
+        <{if $member.picture}>
+          <img align="right" src="<{$member.picture}>" alt="<{$member.realname}>" height=200px>
+        <{/if}>
+		<b>Position:</b> <{$member.spositions}><br><br>
+		<b>Height:</b> <{$member.sheight}><br><br>
+		<b>Weight:</b> <{$member.sweight}><br><br>
+		<b>Jersey Number:</b> <{$member.jnumber}><br><br>
+	   <{if $member.school}><b>School:</b> <{$member.school}><br><br><{/if}>
+	   <b>Experience (Pro/Semi-pro):</b><{if $member.exper}> <{$member.exper}> years<br><br><{else}> Rookie<{/if}>
+	   <b>Birthdate:         </b> <{$member.bdate}><br><br>
+      <{if $xoops_isadmin}>
+           <{if $member.email}><b>Email:        </b><a href="mailto:<{$member.email}>"><{$member.email}></a><br><br><{/if}>
+           <{if $member.phone}><b>Phone Number: </b> <{$member.phone}><br><br><{/if}>
+           <{if $member.address}><b>Street: </b> <{$member.address}><br><br><{/if}>
+		   <b>City, State zip: </b> <{$member.city}>, <{$member.pstate}>  <{$member.zipcode}><br><br>
+	  <{else}>
+	    <b>Hometown:         </b> <{$member.city}>, <{$member.pstate}><br><br>
+	  <{/if}>	   
+      </td>
+    </tr>
+	  </table>
+   <table cellpadding="0" cellspacing="0" width="80%">
+	<tr>
+		<td class="itemFoot"><span class="itemTitle"><CENTER><a href="index.php"><{$lang_back}></a></CENTER></span></td>
+	</tr></table>
+<{/if}>
