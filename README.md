@@ -1,4 +1,4 @@
-![XOOPS CMS](https://avatars2.githubusercontent.com/u/12771439?v=3&s=200)  # XOOPS CMS Module 
+# XOOPS CMS Module   ![XOOPS CMS](https://avatars2.githubusercontent.com/u/12771439?v=3&s=200)
 
 **xRoster** is a simple application and roster page for people to be listed who are in your club / group, etc..
 
@@ -6,3 +6,6 @@
 
 However, please fork it and if you have any improvements and fixes, please share it with us. 
 
+Visit us on http://xoops.org
+
+The upcoming XOOPS CMS version is being crafted at: https://github.com/XOOPS
