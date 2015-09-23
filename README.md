@@ -2,9 +2,9 @@
 
 **xRoster** is a simple application and roster page for people to be listed who are in your club / group, etc..
 
-**XOOPS Module Archive:** This module is an older module for XOOPS CMS, and therefore it might not work with the latest XOOPS and PHP versions. 
+**XOOPS Module Archive:** Module in this archive are older modules for XOOPS CMS, and therefore some of them might not work with the latest XOOPS and PHP versions. 
 
-However, please fork it and if you have any improvements and fixes, please share it with us. 
+However, please fork them and if you have any improvements and fixes, please share them back with us. 
 
 Visit us on http://xoops.org
 
