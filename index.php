@@ -40,7 +40,7 @@ switch ($op) {
     function submit_application($realname, $membername, $email, $age, $impref, $imid, $cid, $location, $speed, $ahours, $pweapon, $sweapon, $clan_before, $why_play, $skills_talents, $additional) {
       global $xoopsModuleConfig, $xoopsConfig;
       $db =& XoopsDatabaseFactory::getDatabaseConnection();
-      $myts =& MyTextSanitizer::getInstance();
+      $myts = MyTextSanitizer::getInstance();
       // quote parameters
       $parameters = array('realname', 'membername', 'email', 'age', 'impref', 'imid', 'cid', 'location', 'speed', 'ahours', 'pweapon', 'sweapon', 'clan_before', 'why_play', 'skills_talents', 'additional');
       foreach($params as $param)
