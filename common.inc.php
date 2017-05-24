@@ -25,7 +25,7 @@ function dump($var) {
 function xRoster_PostVar($k, $defval = null) {
   static $db = false, $myts = false;
   if(!$db) $db =& XoopsDatabaseFactory::getDatabaseConnection();
-  if(!$myts) $myts =& MyTextSanitizer::getInstance();
+  if(!$myts) $myts = MyTextSanitizer::getInstance();
   return isset($_POST[$k]) ? $myts->stripSlashesGPC($_POST[$k]) : $defval;
 }
 
